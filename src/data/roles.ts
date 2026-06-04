@@ -1,0 +1,1 @@
+export const roles = { ADMIN: '관리자', MANAGER: '운영자' } as const;

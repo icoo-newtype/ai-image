@@ -1,0 +1,24 @@
+@import 'mixins';
+@import 'vars';
+@use-rem: true;
+
+.shadow() { box-shadow: 4px 10px 40px 6px rgba(0, 0, 0, 0.08); }
+.border-danger() { border-color: @c-red !important; }
+
+.flex-inline-middle() { display: inline-flex; justify-content: center; flex-flow: column; }
+.flex-middle() { display: flex; justify-content: center; flex-flow: column; }
+.flex-center() { display: flex; justify-content: center; align-items: center; }
+
+.appear(@delay) {
+  transition: transform 2.4s cubic-bezier(.165, .84, .44, 1) @delay; .t-s(1);
+}
+
+.m-mw() {.m(0, 18)}
+//모바일 가로 여백
+.t-mw() {.w(480); .mh-c; .-box;}
+//타블
+.pc-mw() {.w(650); .mh-c; .-box;}
+//타블// 렛 768 가로 여백
+
+.down-up-shadow() { background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.05) 100%); }
+.up-down-shadow() { background: linear-gradient(0, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.05) 100%); }

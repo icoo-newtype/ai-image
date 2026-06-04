@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="패스워드 가드 화면 업데이트">
+      <change beforePath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/common/BButton.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Composition API Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;icoo-newtype&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/icoo-newtype/nt-designkit-fe.git&quot;,
+    &quot;accountId&quot;: &quot;96f2001f-6d35-435c-80f0-e5fddbb461a6&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="39QMWwmJQjTaPolbRupiJuyGurv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/src/views/components/modules",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.local.executor": "Run",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views/components/modules" />
+      <recent name="$PROJECT_DIR$/public/admin_image/module" />
+      <recent name="$PROJECT_DIR$/public/image/common" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/image/common" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/admin/img/module" />
+      <recent name="$PROJECT_DIR$/src/views/components/modules" />
+      <recent name="$PROJECT_DIR$/src/views/components/modules/fe" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="local" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="local" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.local" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="" />
+      <created>1770623876630</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770623876630</updated>
+      <workItem from="1770623877698" duration="32000" />
+      <workItem from="1770623912841" duration="3000" />
+      <workItem from="1770629455360" duration="3733000" />
+      <workItem from="1771489814423" duration="17758000" />
+      <workItem from="1772511285599" duration="170000" />
+      <workItem from="1772511468303" duration="13477000" />
+      <workItem from="1773046910833" duration="21614000" />
+      <workItem from="1773645703494" duration="24703000" />
+      <workItem from="1773912740955" duration="10369000" />
+      <workItem from="1773990732913" duration="68646000" />
+      <workItem from="1774851942294" duration="48400000" />
+      <workItem from="1775452282990" duration="65000" />
+      <workItem from="1775455943510" duration="50812000" />
+      <workItem from="1776231790679" duration="3452000" />
+      <workItem from="1776659384346" duration="45213000" />
+      <workItem from="1778467032509" duration="41415000" />
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <option name="closed" value="true" />
+      <created>1775036484708</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775036484708</updated>
+    </task>
+    <task id="LOCAL-00003" summary="init">
+      <option name="closed" value="true" />
+      <created>1775036555626</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775036555626</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init">
+      <option name="closed" value="true" />
+      <created>1775040708274</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775040708274</updated>
+    </task>
+    <task id="LOCAL-00005" summary="init">
+      <option name="closed" value="true" />
+      <created>1775457425885</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775457425885</updated>
+    </task>
+    <task id="LOCAL-00006" summary="list페이지에 필터 적용">
+      <option name="closed" value="true" />
+      <created>1775460410603</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1775460410603</updated>
+    </task>
+    <task id="LOCAL-00007" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775561216758</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775561216758</updated>
+    </task>
+    <task id="LOCAL-00008" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775626552254</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1775626552254</updated>
+    </task>
+    <task id="LOCAL-00009" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775628556846</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1775628556846</updated>
+    </task>
+    <task id="LOCAL-00010" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775629063491</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1775629063492</updated>
+    </task>
+    <task id="LOCAL-00011" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775630440861</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1775630440861</updated>
+    </task>
+    <task id="LOCAL-00012" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775631670089</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1775631670089</updated>
+    </task>
+    <task id="LOCAL-00013" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775632810368</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1775632810368</updated>
+    </task>
+    <task id="LOCAL-00014" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775632945885</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1775632945885</updated>
+    </task>
+    <task id="LOCAL-00015" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775633093464</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1775633093464</updated>
+    </task>
+    <task id="LOCAL-00016" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775633705906</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1775633705906</updated>
+    </task>
+    <task id="LOCAL-00017" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775634073350</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1775634073350</updated>
+    </task>
+    <task id="LOCAL-00018" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775639086590</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1775639086590</updated>
+    </task>
+    <task id="LOCAL-00019" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775642584692</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1775642584692</updated>
+    </task>
+    <task id="LOCAL-00020" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775643506519</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1775643506519</updated>
+    </task>
+    <task id="LOCAL-00021" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775806705625</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1775806705625</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fe header에 anchor 메뉴 추가">
+      <option name="closed" value="true" />
+      <created>1776074527043</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1776074527043</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fe header에 anchor 메뉴 추가">
+      <option name="closed" value="true" />
+      <created>1776075921571</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1776075921571</updated>
+    </task>
+    <task id="LOCAL-00024" summary="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정">
+      <option name="closed" value="true" />
+      <created>1776076875442</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1776076875442</updated>
+    </task>
+    <task id="LOCAL-00025" summary="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정">
+      <option name="closed" value="true" />
+      <created>1776135780732</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1776135780732</updated>
+    </task>
+    <task id="LOCAL-00026" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776232409705</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1776232409705</updated>
+    </task>
+    <task id="LOCAL-00027" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776241991809</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1776241991809</updated>
+    </task>
+    <task id="LOCAL-00028" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776660609373</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1776660609373</updated>
+    </task>
+    <task id="LOCAL-00029" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776677511861</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1776677511861</updated>
+    </task>
+    <task id="LOCAL-00030" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776758679924</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1776758679924</updated>
+    </task>
+    <task id="LOCAL-00031" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776837591790</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1776837591790</updated>
+    </task>
+    <task id="LOCAL-00032" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776838800435</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1776838800435</updated>
+    </task>
+    <task id="LOCAL-00033" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776840539851</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1776840539851</updated>
+    </task>
+    <task id="LOCAL-00034" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776926637267</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1776926637267</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Resource 모듈 추가">
+      <option name="closed" value="true" />
+      <created>1777441193042</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1777441193042</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Resource 모듈 추가">
+      <option name="closed" value="true" />
+      <created>1777441499620</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1777441499620</updated>
+    </task>
+    <task id="LOCAL-00037" summary="video 모듈 추가">
+      <option name="closed" value="true" />
+      <created>1777443311839</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1777443311839</updated>
+    </task>
+    <task id="LOCAL-00038" summary="리소스 모듈 수정">
+      <option name="closed" value="true" />
+      <created>1777527594073</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1777527594073</updated>
+    </task>
+    <task id="LOCAL-00039" summary="리소스 모듈 수정">
+      <option name="closed" value="true" />
+      <created>1777528483946</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1777528483946</updated>
+    </task>
+    <task id="LOCAL-00040" summary="비디오 모듈 수정">
+      <option name="closed" value="true" />
+      <created>1777528854127</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1777528854127</updated>
+    </task>
+    <task id="LOCAL-00041" summary="color 모듈 수정">
+      <option name="closed" value="true" />
+      <created>1777534567793</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1777534567793</updated>
+    </task>
+    <task id="LOCAL-00042" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1777541184087</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1777541184087</updated>
+    </task>
+    <task id="LOCAL-00043" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1777542760118</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1777542760118</updated>
+    </task>
+    <task id="LOCAL-00044" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1778561277046</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1778561277046</updated>
+    </task>
+    <task id="LOCAL-00045" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1778658179040</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1778658179040</updated>
+    </task>
+    <task id="LOCAL-00046" summary="푸터 로고 크기">
+      <option name="closed" value="true" />
+      <created>1778737738232</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1778737738232</updated>
+    </task>
+    <task id="LOCAL-00047" summary="푸터 로고 크기">
+      <option name="closed" value="true" />
+      <created>1778737861121</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1778737861121</updated>
+    </task>
+    <task id="LOCAL-00048" summary="푸터 로고 크기">
+      <option name="closed" value="true" />
+      <created>1778737910322</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1778737910322</updated>
+    </task>
+    <task id="LOCAL-00049" summary="푸터 로고 크기">
+      <option name="closed" value="true" />
+      <created>1778739269849</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1778739269849</updated>
+    </task>
+    <task id="LOCAL-00050" summary="패스워드 가드 화면 업데이트">
+      <option name="closed" value="true" />
+      <created>1779168401078</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1779168401078</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="init" />
+    <MESSAGE value="list페이지에 필터 적용" />
+    <MESSAGE value="qa적용" />
+    <MESSAGE value="fe header에 anchor 메뉴 추가" />
+    <MESSAGE value="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정" />
+    <MESSAGE value="[fe] 추가 QA 적용" />
+    <MESSAGE value="Resource 모듈 추가" />
+    <MESSAGE value="video 모듈 추가" />
+    <MESSAGE value="리소스 모듈 수정" />
+    <MESSAGE value="비디오 모듈 수정" />
+    <MESSAGE value="color 모듈 수정" />
+    <MESSAGE value="추가 qa" />
+    <MESSAGE value="푸터 로고 크기" />
+    <MESSAGE value="패스워드 가드 화면 업데이트" />
+    <option name="LAST_COMMIT_MESSAGE" value="패스워드 가드 화면 업데이트" />
+  </component>
+</project>
