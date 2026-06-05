@@ -26,6 +26,10 @@ const router = createRouter({
   },
   routes: [
     {
+      path: '/',
+      component: () => import('@/views/pages/Home.vue'),
+    },
+    {
       path: '/admin',
       component: DefaultContainer,
       redirect: '/admin/project/list',
