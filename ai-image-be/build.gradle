@@ -1,0 +1,43 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.aiimage'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.9' // swagger
+    implementation 'com.navercorp.lucy:lucy-xss:1.6.3'
+    implementation group: 'org.bgee.log4jdbc-log4j2', name:'log4jdbc-log4j2-jdbc4.1', version: '1.16'
+    implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.1'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    // net.oxizen
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'org.jsoup:jsoup:1.15.3'
+    implementation 'org.json:json:20231013'
+    implementation 'commons-io:commons-io:2.14.0'
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

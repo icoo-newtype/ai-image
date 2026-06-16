@@ -1,5 +1,11 @@
-node_modules/
-dist/
+ai-image-fe/node_modules/
+ai-image-fe/dist/
+ai-image-be/node_modules/
+ai-image-be/dist/
+ai-image-be/build/
+ai-image-be/.gradle/
+ai-image-be/.env.local
+ai-image-fe/.env.local
 .env*.local
 .DS_Store
 *.local

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>580f7af0-fa82-4ac0-a1e1-fc013d99225f.SCHEMA:aaarchigroup</OriginalElement>
+  <nodes>
+    <node x="-388.5" y="1176.5">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_category</node>
+    <node x="-579.5" y="1176.4995">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_tag</node>
+    <node x="-815.5" y="708.1720360824743">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_people</node>
+    <node x="-98.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_manager</node>
+    <node x="-815.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_main</node>
+    <node x="-800.5" y="1176.5">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_related</node>
+    <node x="136.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_code</node>
+    <node x="-167.5" y="960.7680412371133">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news_related</node>
+    <node x="-578.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project</node>
+    <node x="367.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_file</node>
+    <node x="603.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_login_history</node>
+    <node x="-338.5" y="519.0">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news</node>
+    <node x="-338.5" y="960.7680412371134">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news_tag</node>
+    <node x="603.5" y="660.3627577319587">580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_access_history</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news_related" target="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news" relationship="REFERENCES">
+      <point x="0.0" y="-53.00004123711324" />
+      <point x="-88.5" y="925.0" />
+      <point x="-236.0" y="925.0" />
+      <point x="0.0" y="185.0" />
+    </edge>
+    <edge source="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news_tag" target="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_news" relationship="REFERENCES">
+      <point x="0.0" y="-53.00004123711335" />
+      <point x="-270.5" y="925.0" />
+      <point x="-236.0" y="925.0" />
+      <point x="0.0" y="185.0" />
+    </edge>
+    <edge source="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_tag" target="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project" relationship="REFERENCES">
+      <point x="71.0" y="5.000000001018634E-4" />
+      <point x="-413.0" y="1229.5" />
+      <point x="-413.0" y="1151.0" />
+      <point x="-604.0" y="1151.0" />
+      <point x="-604.0" y="1079.5" />
+      <point x="-102.5" y="276.5" />
+    </edge>
+    <edge source="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_category" target="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project" relationship="REFERENCES">
+      <point x="-93.0" y="0.0" />
+      <point x="-413.0" y="1218.0" />
+      <point x="-413.0" y="1151.0" />
+      <point x="-604.0" y="1151.0" />
+      <point x="-604.0" y="1079.5" />
+      <point x="-102.5" y="276.5" />
+    </edge>
+    <edge source="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_related" target="580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project" relationship="REFERENCES">
+      <point x="86.0" y="0.0" />
+      <point x="-604.0" y="1229.5" />
+      <point x="-604.0" y="1079.5" />
+      <point x="-102.5" y="276.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.9779458097038437" showDependencies="false" x="-155.0" y="769.5" />
+  <SelectedNodes>
+    <node>580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_tag</node>
+    <node>580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_related</node>
+    <node>580f7af0-fa82-4ac0-a1e1-fc013d99225f.TABLE:aaarchigroup.t_project_category</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

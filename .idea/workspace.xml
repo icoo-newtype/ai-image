@@ -5,8 +5,243 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="패스워드 가드 화면 업데이트">
-      <change beforePath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/common/BButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/common/BButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.localspring" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/designkit-fe.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/designkit-fe.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/arrow-handle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/ico-sns-copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/ico-sns-fb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/ico-sns-in.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/plus-circle-hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/plus-circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-mute-hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-mute.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-pause-hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-play-hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-sound-hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/common/video-sound.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/copy-paste-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/edit-pencil.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/first-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/last-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/logo-l.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/logo-w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/modal-x.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/img.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-ai.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-bold.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-center.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-italic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-link.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-subscript.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/text-control-superscript.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/module/video.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/next-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/prev-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/tag-x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_image/trash-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/coreui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon-180.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Black.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Black.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-ExtraBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-ExtraBold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-ExtraLight.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-ExtraLight.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Light.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Light.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Medium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Medium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-SemiBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-SemiBold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Thin.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/font/Pretendard/Pretendard-Thin.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/footer-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/footer-bg.s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-arrow-down-large.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-arrow-down-w.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-arrow-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-download-w.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-download.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-filter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-hamburger-w.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-hamburger.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-more.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-outlink-g.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-outlink.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-reset.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-scroll-down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-search-b.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-seemore-w.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-seemore.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-sns-copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-sns-fb.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-sns-in.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-top.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/ico-x.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/logo-w.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/pwd-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/common/slider-arrow.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/filterMap.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/nav.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/roles.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useFilterParam.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useInputDialog.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useKeyEvent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useStoredParam.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useWindowResize.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useWindowScroll.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/common.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/fonts.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/module.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/proj.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/vars.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/modal/components/ModalContainer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/modal/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/modal/modal.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/modal/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/toast/components/ToastContainer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/toast/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/toast/toast.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/toast/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/routerTable.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/browser.store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modalStack.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/page.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/state.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/api.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/common.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/components.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/global.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/media.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/util.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/componentUtil.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/domUtil.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/meta.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/oax.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/routeUtil.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/timeUtil.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/CdnImg.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/CodeManager.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/ScrollHolder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/VideoPlayer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/article/Drag.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/article/DraggableTable.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/article/TagSelect.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BButton.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BButtonGroup.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BCard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BCardBody.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BCardGroup.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BCheckbox.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BCol.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BDropdown.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BDropdownItem.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BForm.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BFormGroup.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BInputGroup.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BInputGroupAppend.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BInputGroupPrepend.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BInputGroupText.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BPagination.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BRow.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BSpinner.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BSwtich.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/Breadcrumb.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/Dialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/Modal.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/DropSelect.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/FileInput.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/FilterDropSelect.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/FilterRadioButton.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/ImageSelect.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/MediaPicker.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/MediaSelect.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/RadioButton.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/SearchBlock.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/TextBox.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/form/TextInput.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modal/ModuleModal.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modal/PasswordModal.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/BasicText.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Blank.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/ColorPalette.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/DoubleImage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Download.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeBlank.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeColorPalette.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeDownload.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeMedia.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeResource.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeSlider.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeTitleText.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeVideo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Media.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Module.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/ModuleGroup.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Resource.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Slider.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/TitleText.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Video.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/table/GridTable.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/table/GridTableColumn.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/table/GridTableDataColumn.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/table/GridTableHeader.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/table/GridTableHeaderColumn.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/containers/DefaultContainer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/error/403.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/error/404.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layout/AppFooter.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layout/DefaultLayout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/AccessLog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/LoginLog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ManagerList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/Password.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectArticle.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectItem.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/page.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-plugin/componentsMap/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +266,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/icoo-newtype/nt-designkit-fe.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/icoo-newtype/ai-image.git&quot;,
     &quot;accountId&quot;: &quot;96f2001f-6d35-435c-80f0-e5fddbb461a6&quot;
   }
 }</component>
@@ -50,32 +285,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/src/views/components/modules",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "npm.local.executor": "Run",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/icoo/Project/2026/nt-designkit/ai-image/src/views/components/modules&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.local.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/icoo/Project/2026/ai-image/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/views/components/modules" />
@@ -140,6 +375,8 @@
       <workItem from="1776231790679" duration="3452000" />
       <workItem from="1776659384346" duration="45213000" />
       <workItem from="1778467032509" duration="41415000" />
+      <workItem from="1780562162271" duration="6172000" />
+      <workItem from="1781074230721" duration="243000" />
     </task>
     <task id="LOCAL-00002" summary="init">
       <option name="closed" value="true" />

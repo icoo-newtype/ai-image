@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiimage.mapper.ProjectMapper">
+	<sql id="where">
+		WHERE 1 = 1
+		<if test="search != null">
+			AND
+			<choose>
+				<when test="searchType == 'Title'">
+					title like CONCAT('%',#{ search },'%')
+				</when>
+				<when test="searchType == 'Contents'">
+					search like CONCAT('%',#{ search },'%')
+				</when>
+				<otherwise>
+					( title like CONCAT('%',#{ search },'%') or search like CONCAT('%',#{ search },'%') )
+				</otherwise>
+			</choose>
+		</if>
+		<if test="type != null">
+			AND `type` = #{ type }
+		</if>
+		<if test="access != null">
+			AND `access` = #{ access }
+		</if>
+	</sql>
+
+	<select id="count" resultType="Integer">
+		SELECT COUNT(sq) FROM t_project
+		<include refid="where"/>
+	</select>
+
+	<select id="list" resultType="com.aiimage.model.ProjectItem">
+		SELECT *
+		FROM t_project
+		<include refid="where"/>
+		ORDER BY sq DESC
+		<if test="paging">
+			LIMIT #{ offset }, #{ perPage }
+		</if>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="sq">
+		INSERT INTO t_project (slug, title, resource, update_dtt, register_dtt)
+		VALUES (#{ slug }, #{ title }, #{ resource }, now(), now())
+	</insert>
+
+
+	<select id="detail" resultType="com.aiimage.model.ProjectItem">
+		SELECT sq, slug, title, type, client, access, logo_image, footer_logo_image, og_image, resource, password
+		FROM t_project p
+		WHERE sq = #{ sq }
+		<if test="!admin">
+			AND access != 'N'
+		</if>
+	</select>
+
+	<select id="slugDetail" resultType="com.aiimage.model.ProjectItem">
+		SELECT *
+		FROM t_project p
+		WHERE slug = #{ slug }
+			AND access != 'N'
+	</select>
+
+	<select id="getPassword" resultType="String">
+		SELECT password
+		FROM t_project p
+		WHERE slug = #{ slug }
+	</select>
+
+	<update id="update">
+		UPDATE t_project
+		SET slug = #{ slug },
+		title = #{ title },
+		type = #{ type },
+		client = #{ client },
+		access = #{ access },
+		<if test="password != null">
+			password = #{ password },
+		</if>
+		logo_image = #{ logoImage },
+		footer_logo_image = #{ footerLogoImage },
+		og_image = #{ ogImage },
+		resource = #{ resource },
+		update_dtt = now()
+		WHERE sq = #{ sq }
+	</update>
+
+	<delete id="delete">
+		DELETE
+		FROM t_project
+		WHERE sq = #{ sq }
+	</delete>
+
+	<select id="checkSlug" resultType="Integer">
+		SELECT count(*)
+		FROM t_project
+		WHERE slug = #{ slug }
+		<if test="sq != null">
+			AND sq != #{ sq }
+		</if>
+	</select>
+</mapper>

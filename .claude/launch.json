@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ai-image-fe",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["--cwd", "ai-image-fe", "dev"],
+      "port": 8091
+    }
+  ]
+}

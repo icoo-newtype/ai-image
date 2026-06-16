@@ -1,0 +1,52 @@
+server:
+  port: 8090
+logging:
+  level:
+    org.springframework.web: info #info
+    jdbc.sqlonly: off
+    jdbc.sqltiming: info #info
+    jdbc.connection: off
+    jdbc.audit: off
+    jdbc.resultset: off
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+gemini:
+  api:
+    key: ${GEMMINI_KEY}
+---
+spring:
+  config.activate.on-profile: local
+  datasource:
+    url: jdbc:log4jdbc:mariadb://43.201.100.96:3306/designkit?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: nt
+    password: ${NT_DB_PWD}
+allow-origin: http://localhost:8091
+cloud.aws:
+  credentials:
+    accessKey: ${AWS_ACCESS_KEY}
+    secretKey: ${AWS_SECRET_KEY}
+  s3:
+    region: ap-northeast-2
+ncblog:
+  s3bucket: 'nt-designkit'
+---
+spring:
+  config.activate.on-profile: prod
+  datasource:
+    url: jdbc:mariadb://43.201.100.96:3306/designkit?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
+    username: nt
+    password: ${NT_DB_PWD}
+    driver-class-name: org.mariadb.jdbc.Driver
+allow-origin: http://localhost:8091, https://kit.newtype.design
+cloud.aws:
+  credentials:
+    accessKey: ${AWS_ACCESS_KEY}
+    secretKey: ${AWS_SECRET_KEY}
+  s3:
+    region: ap-northeast-2
+ncblog:
+  s3bucket: 'nt-designkit'

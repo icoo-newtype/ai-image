@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiimage.mapper.CodeMapper">
+	<select id="getFullList" resultType="com.aiimage.model.CodeItem">
+		SELECT *
+		FROM t_code
+		WHERE access = 'Y'
+			AND proj_sq = #{ projSq }
+		ORDER BY parent_code, odr
+	</select>
+
+	<select id="getList" resultType="com.aiimage.model.CodeItem">
+		SELECT *
+		FROM t_code
+		WHERE parent_code = #{ parentCode }
+		AND proj_sq = #{ projSq }
+		<if test="!admin">
+			and access = 'Y'
+		</if>
+		ORDER BY odr;
+	</select>
+
+	<select id="getListCount" resultType="Integer">
+		SELECT count(*)
+		FROM t_code
+		WHERE parent_code = #{ parentCode }
+			AND proj_sq = #{ projSq }
+			and access = 'Y'
+	</select>
+
+	<select id="detail" resultType="com.aiimage.model.CodeItem">
+		SELECT c.*
+		FROM t_code c
+			     JOIN designkit.t_project p ON c.proj_sq = p.sq
+		WHERE c.code = #{code}
+			AND p.slug = #{slug}
+	</select>
+
+	<insert id="insertItem">
+		INSERT INTO t_code (proj_sq, code, parent_code, label, data, access, odr)
+		SELECT #{ projSq }, #{ code }, #{ parentCode }, #{ label }, #{ data }, #{ access }, count(*) + 1
+		FROM t_code
+		WHERE proj_sq = #{ projSq }
+		<choose>
+			<when test="parentCode != null">
+				AND parent_code = #{ parentCode }
+			</when>
+			<otherwise>
+				AND parent_code IS NULL
+			</otherwise>
+		</choose>
+	</insert>
+
+	<update id="updateItem">
+		UPDATE t_code
+		SET label   = #{ label },
+		    data    = #{ data },
+		    access  = #{ access },
+		    article = #{ article }
+		WHERE code = #{ code }
+			AND proj_sq = #{ projSq }
+	</update>
+
+	<delete id="removeItem">
+		DELETE FROM t_code
+		WHERE proj_sq = #{projSq}
+			AND code IN (
+			WITH RECURSIVE cte AS (
+				SELECT code FROM t_code
+				WHERE code = #{code} AND proj_sq = #{projSq}
+				UNION ALL
+				SELECT c.code FROM t_code c
+					                   INNER JOIN cte ON c.parent_code = cte.code
+				WHERE c.proj_sq = #{projSq}
+			)
+			SELECT code FROM cte
+		)
+	</delete>
+
+	<select id="checkItem" resultType="Integer">
+		SELECT count(*)
+		from t_code
+		WHERE code = #{ code }
+			AND proj_sq = #{ projSq }
+	</select>
+
+	<update id="setOrder">
+		UPDATE t_code
+		SET odr = #{ odr }
+		WHERE code = #{ code }
+			AND proj_sq = #{ projSq }
+	</update>
+
+</mapper>
