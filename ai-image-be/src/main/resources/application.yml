@@ -41,7 +41,7 @@ spring:
     username: nt
     password: ${NT_DB_PWD}
     driver-class-name: org.mariadb.jdbc.Driver
-allow-origin: http://localhost:8091, https://kit.newtype.design
+allow-origin: http://localhost:8091, https://kit.newtype.design, https://ai.newtype.design
 cloud.aws:
   credentials:
     accessKey: ${AWS_ACCESS_KEY}
