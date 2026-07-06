@@ -6,6 +6,7 @@ ai-image-be/build/
 ai-image-be/.gradle/
 ai-image-be/.env.local
 ai-image-fe/.env.local
+ai-image-fe/.env.production
 .env*.local
 .DS_Store
 *.local

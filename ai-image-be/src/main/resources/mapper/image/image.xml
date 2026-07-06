@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aiimage.mapper.image.ImageMapper">
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="sq">
+    INSERT INTO t_image (prompt, model, s3_key, url, actor)
+    VALUES (#{prompt}, #{model}, #{s3Key}, #{url}, #{actor})
+  </insert>
+
+  <select id="getList" resultType="com.aiimage.model.image.ImageItem">
+    SELECT sq, prompt, model, s3_key, url, reg_dtt, actor
+    FROM t_image
+    ORDER BY sq DESC
+  </select>
+
+</mapper>

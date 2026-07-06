@@ -20,11 +20,13 @@
       <!-- 프롬프트 입력 영역 -->
       <div class="prompt-section">
         <textarea
+          ref="textareaRef"
           v-model="prompt"
           class="prompt-input"
           placeholder="Describe the image you want to create..."
           :disabled="loading"
           @keydown.ctrl.enter="generate"
+          @input="autoResize"
         />
         <button
           class="create-btn"
@@ -69,6 +71,14 @@ const models = [
 ];
 
 const selectedModel = ref('gpt-image-1');
+const textareaRef = ref<HTMLTextAreaElement>();
+
+function autoResize() {
+  const el = textareaRef.value;
+  if (!el) return;
+  el.style.height = 'auto';
+  el.style.height = `${el.scrollHeight}px`;
+}
 const prompt = ref('');
 const usedPrompt = ref('');
 const imageUrl = ref('');
@@ -199,6 +209,7 @@ async function generate() {
 
 .prompt-input {
   flex: 1;
+  min-height: 100px;
   height: 100px;
   background: #1a1a1a;
   border: 1px solid #2e2e2e;
@@ -217,7 +228,9 @@ async function generate() {
 }
 
 .create-btn {
-  height: 100px;
+  align-self: stretch;
+  height: auto;
+  min-height: 100px;
   padding: 0 32px;
   background: #fff;
   color: #0a0a0a;
