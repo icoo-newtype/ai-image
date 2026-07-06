@@ -79,7 +79,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { GoogleGenAI } from '@google/genai';
-import { getCookie } from '@/utils/index';
+import oax from '@/utils/oax';
 
 interface ImageItem {
   sq: number;
@@ -152,31 +152,22 @@ async function generateWithGemini(): Promise<string> {
 }
 
 async function saveImage(b64Image: string) {
-  const token = getCookie('authToken');
-  const response = await fetch('/api/admin/image/save', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { 'X-AUTH-TOKEN': token } : {}),
-    },
-    credentials: 'include',
-    body: JSON.stringify({
+  try {
+    await oax.postJson('/api/admin/image/save', {
       b64Image,
       prompt: usedPrompt.value,
       model: selectedModel.value,
-    }),
-  });
-  if (response.ok) {
+    });
     await loadImageList();
+  } catch (e) {
+    // silent fail
   }
 }
 
 async function loadImageList() {
   try {
-    const response = await fetch('/api/image/list');
-    if (response.ok) {
-      imageList.value = await response.json();
-    }
+    const { data } = await oax.get<ImageItem[]>('/api/image/list');
+    imageList.value = data;
   } catch (e) {
     // silent fail
   }
