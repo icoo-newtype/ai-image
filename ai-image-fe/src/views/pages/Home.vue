@@ -138,7 +138,7 @@ async function generateWithGemini(): Promise<string> {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
   const ai = new GoogleGenAI({ apiKey });
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash-preview-image-generation',
+    model: 'gemini-3.1-flash-image',
     contents: [{ role: 'user', parts: [{ text: prompt.value }] }],
     config: { responseModalities: ['IMAGE', 'TEXT'] },
   });
