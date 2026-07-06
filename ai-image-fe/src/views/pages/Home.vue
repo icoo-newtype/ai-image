@@ -265,7 +265,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .ai-image-page {
   min-height: 100vh;
   background: #0a0a0a;
@@ -531,10 +531,6 @@ onMounted(() => {
   animation: spin 0.7s linear infinite;
 }
 
-
-</style>
-
-<style lang="less">
 .modal-backdrop {
   position: fixed;
   inset: 0;
