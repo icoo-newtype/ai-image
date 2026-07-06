@@ -63,7 +63,7 @@
       <div v-if="imageList.length > 0" class="gallery-section">
         <h2 class="gallery-title">Gallery</h2>
         <div class="gallery-grid">
-          <div v-for="item in imageList" :key="item.sq" class="gallery-item">
+          <div v-for="item in imageList" :key="item.sq" class="gallery-item" @click="openModal(item)">
             <img :src="item.url" :alt="item.prompt" />
             <div class="gallery-overlay">
               <p class="gallery-prompt">{{ item.prompt }}</p>
@@ -76,6 +76,28 @@
         </div>
       </div>
     </div>
+
+    <!-- 이미지 상세 팝업 -->
+    <Teleport to="body">
+      <div v-if="modalItem" class="modal-backdrop" @click.self="closeModal">
+        <div class="modal">
+          <button class="modal-close" @click="closeModal">✕</button>
+          <div class="modal-image-wrap">
+            <img :src="modalItem.url" :alt="modalItem.prompt" />
+          </div>
+          <div class="modal-info">
+            <p class="modal-prompt">{{ modalItem.prompt }}</p>
+            <div class="modal-meta">
+              <span class="modal-model">{{ modalItem.model }}</span>
+              <span class="modal-date">{{ formatDate(modalItem.regDtt) }}</span>
+            </div>
+            <a :href="modalItem.url" :download="`ai-image-${modalItem.sq}.png`" target="_blank" class="modal-download-btn">
+              Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -117,6 +139,14 @@ const lastSq = ref(0);
 const hasMore = ref(true);
 const listLoading = ref(false);
 const sentinelRef = ref<HTMLElement>();
+const modalItem = ref<ImageItem | null>(null);
+
+function openModal(item: ImageItem) { modalItem.value = item; }
+function closeModal() { modalItem.value = null; }
+function formatDate(dtt: string) {
+  if (!dtt) return '';
+  return dtt.replace('T', ' ').slice(0, 16);
+}
 
 async function generateWithGPT(): Promise<string> {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -499,5 +529,106 @@ onMounted(() => {
   border-top-color: #fff;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
+}
+
+/* 모달 */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 640px;
+  width: 100%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background 0.2s;
+
+  &:hover { background: rgba(255,255,255,0.15); }
+}
+
+.modal-image-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #0a0a0a;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.modal-info {
+  padding: 20px;
+}
+
+.modal-prompt {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.modal-model {
+  font-size: 12px;
+  color: #666;
+  background: #1e1e1e;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.modal-date {
+  font-size: 12px;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.modal-download-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #fff;
+  color: #0a0a0a;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover { background: #e0e0e0; }
 }
 </style>
