@@ -78,6 +78,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { GoogleGenAI } from '@google/genai';
 
 interface ImageItem {
   sq: number;
@@ -135,25 +136,18 @@ async function generateWithGPT(): Promise<string> {
 
 async function generateWithGemini(): Promise<string> {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        instances: [{ prompt: prompt.value }],
-        parameters: { sampleCount: 1 },
-      }),
+  const ai = new GoogleGenAI({ apiKey });
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.0-flash-preview-image-generation',
+    contents: [{ role: 'user', parts: [{ text: prompt.value }] }],
+    config: { responseModalities: ['IMAGE', 'TEXT'] },
+  });
+  for (const part of response.candidates?.[0]?.content?.parts ?? []) {
+    if (part.inlineData?.data) {
+      return part.inlineData.data;
     }
-  );
-  if (!response.ok) {
-    const err = await response.json();
-    throw new Error(err.error?.message || 'Image generation failed');
   }
-  const data = await response.json();
-  const b64 = data.predictions?.[0]?.bytesBase64Encoded;
-  if (!b64) throw new Error('No image returned from Gemini');
-  return b64;
+  throw new Error('No image returned from Gemini');
 }
 
 async function saveImage(b64Image: string) {

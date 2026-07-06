@@ -10,3 +10,4 @@ ai-image-fe/.env.production
 .env*.local
 .DS_Store
 *.local
+ai-image-fe/.env.production
