@@ -24,7 +24,7 @@ public class AiImageDbConfig {
   private final ApplicationContext context;
 
   @Bean
-  @ConfigurationProperties(prefix = "spring.aiimage-datasource")
+  @ConfigurationProperties(prefix = "aiimage-datasource")
   public DataSource aiImageDataSource() {
     return DataSourceBuilder.create().build();
   }

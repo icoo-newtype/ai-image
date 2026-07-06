@@ -24,11 +24,11 @@ spring:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     username: nt
     password: ${NT_DB_PWD}
-  aiimage-datasource:
-    url: jdbc:log4jdbc:mariadb://43.201.100.96:3306/aiimage?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    username: nt
-    password: ${NT_DB_PWD}
+aiimage-datasource:
+  url: jdbc:log4jdbc:mariadb://43.201.100.96:3306/aiimage?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
+  driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+  username: nt
+  password: ${NT_DB_PWD}
 allow-origin: http://localhost:8091
 cloud.aws:
   credentials:
@@ -48,11 +48,11 @@ spring:
     username: nt
     password: ${NT_DB_PWD}
     driver-class-name: org.mariadb.jdbc.Driver
-  aiimage-datasource:
-    url: jdbc:mariadb://43.201.100.96:3306/aiimage?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
-    username: nt
-    password: ${NT_DB_PWD}
-    driver-class-name: org.mariadb.jdbc.Driver
+aiimage-datasource:
+  url: jdbc:mariadb://43.201.100.96:3306/aiimage?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
+  username: nt
+  password: ${NT_DB_PWD}
+  driver-class-name: org.mariadb.jdbc.Driver
 allow-origin: http://localhost:8091, https://kit.newtype.design, https://ai.newtype.design
 cloud.aws:
   credentials:
