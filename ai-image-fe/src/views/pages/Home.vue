@@ -78,26 +78,23 @@
     </div>
 
     <!-- 이미지 상세 팝업 -->
-    <Teleport to="body">
-      <div v-if="modalItem" class="modal-backdrop" @click.self="closeModal">
-        <div class="modal">
-          <button class="modal-close" @click="closeModal">✕</button>
-          <div class="modal-image-wrap">
-            <img :src="modalItem.url" :alt="modalItem.prompt" />
+    <Modal v-model="modalOpen" :hide-header="true" size="md">
+      <div v-if="modalItem" class="image-detail-modal">
+        <div class="image-detail-img-wrap">
+          <img :src="modalItem.url" :alt="modalItem.prompt" />
+        </div>
+        <div class="image-detail-info">
+          <p class="image-detail-prompt">{{ modalItem.prompt }}</p>
+          <div class="image-detail-meta">
+            <span class="image-detail-model">{{ modalItem.model }}</span>
+            <span class="image-detail-date">{{ formatDate(modalItem.regDtt) }}</span>
           </div>
-          <div class="modal-info">
-            <p class="modal-prompt">{{ modalItem.prompt }}</p>
-            <div class="modal-meta">
-              <span class="modal-model">{{ modalItem.model }}</span>
-              <span class="modal-date">{{ formatDate(modalItem.regDtt) }}</span>
-            </div>
-            <a :href="modalItem.url" :download="`ai-image-${modalItem.sq}.png`" target="_blank" class="modal-download-btn">
-              Download
-            </a>
-          </div>
+          <a :href="modalItem.url" target="_blank" :download="`ai-image-${modalItem.sq}.png`" class="image-detail-download">
+            Download
+          </a>
         </div>
       </div>
-    </Teleport>
+    </Modal>
   </div>
 </template>
 
@@ -105,6 +102,7 @@
 import { ref, onMounted } from 'vue';
 import { GoogleGenAI } from '@google/genai';
 import oax from '@/utils/oax';
+import Modal from '@/views/components/common/Modal.vue';
 
 interface ImageItem {
   sq: number;
@@ -140,9 +138,10 @@ const hasMore = ref(true);
 const listLoading = ref(false);
 const sentinelRef = ref<HTMLElement>();
 const modalItem = ref<ImageItem | null>(null);
+const modalOpen = ref(false);
 
-function openModal(item: ImageItem) { modalItem.value = item; }
-function closeModal() { modalItem.value = null; }
+function openModal(item: ImageItem) { modalItem.value = item; modalOpen.value = true; }
+function closeModal() { modalOpen.value = false; }
 function formatDate(dtt: string) {
   if (!dtt) return '';
   return dtt.replace('T', ' ').slice(0, 16);
@@ -531,48 +530,11 @@ onMounted(() => {
   animation: spin 0.7s linear infinite;
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 24px;
-}
-
-.modal {
-  background: #111;
-  border-radius: 16px;
+.image-detail-modal {
   overflow: hidden;
-  max-width: 640px;
-  width: 100%;
-  position: relative;
 }
 
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 13px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  transition: background 0.2s;
-
-  &:hover { background: rgba(255,255,255,0.15); }
-}
-
-.modal-image-wrap {
+.image-detail-img-wrap {
   width: 100%;
   aspect-ratio: 1;
   background: #0a0a0a;
@@ -585,24 +547,24 @@ onMounted(() => {
   }
 }
 
-.modal-info {
+.image-detail-info {
   padding: 20px;
 }
 
-.modal-prompt {
+.image-detail-prompt {
   font-size: 14px;
   color: #ccc;
   line-height: 1.6;
   margin-bottom: 12px;
 }
 
-.modal-meta {
+.image-detail-meta {
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
 }
 
-.modal-model {
+.image-detail-model {
   font-size: 12px;
   color: #666;
   background: #1e1e1e;
@@ -610,14 +572,14 @@ onMounted(() => {
   border-radius: 999px;
 }
 
-.modal-date {
+.image-detail-date {
   font-size: 12px;
   color: #555;
   display: flex;
   align-items: center;
 }
 
-.modal-download-btn {
+.image-detail-download {
   display: inline-block;
   padding: 10px 24px;
   background: #fff;
