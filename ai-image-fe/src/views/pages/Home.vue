@@ -3,6 +3,20 @@
     <div class="inner">
       <h1 class="title">AI Image Generator</h1>
 
+      <!-- 모델 선택 -->
+      <div class="model-select-wrap">
+        <button
+          v-for="m in models"
+          :key="m.value"
+          class="model-btn"
+          :class="{ active: selectedModel === m.value }"
+          :disabled="loading"
+          @click="selectedModel = m.value"
+        >
+          {{ m.label }}
+        </button>
+      </div>
+
       <!-- 프롬프트 입력 영역 -->
       <div class="prompt-section">
         <textarea
@@ -49,11 +63,64 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+const models = [
+  { label: 'GPT Image', value: 'gpt-image-1' },
+  { label: 'Gemini', value: 'gemini-imagen' },
+];
+
+const selectedModel = ref('gpt-image-1');
 const prompt = ref('');
 const usedPrompt = ref('');
 const imageUrl = ref('');
 const loading = ref(false);
 const error = ref('');
+
+async function generateWithGPT() {
+  const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+  const response = await fetch('https://api.openai.com/v1/images/generations', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-image-1',
+      prompt: prompt.value,
+      n: 1,
+      size: '1024x1024',
+    }),
+  });
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.error?.message || 'Image generation failed');
+  }
+  const data = await response.json();
+  const b64 = data.data[0].b64_json;
+  return b64 ? `data:image/png;base64,${b64}` : data.data[0].url;
+}
+
+async function generateWithGemini() {
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        instances: [{ prompt: prompt.value }],
+        parameters: { sampleCount: 1 },
+      }),
+    }
+  );
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.error?.message || 'Image generation failed');
+  }
+  const data = await response.json();
+  const b64 = data.predictions?.[0]?.bytesBase64Encoded;
+  if (!b64) throw new Error('No image returned from Gemini');
+  return `data:image/png;base64,${b64}`;
+}
 
 async function generate() {
   if (!prompt.value.trim() || loading.value) return;
@@ -64,33 +131,9 @@ async function generate() {
   usedPrompt.value = prompt.value;
 
   try {
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-    const response = await fetch('https://api.openai.com/v1/images/generations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-image-1',
-        prompt: prompt.value,
-        n: 1,
-        size: '1024x1024',
-      }),
-    });
-
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error?.message || 'Image generation failed');
-    }
-
-    const data = await response.json();
-    // gpt-image-1은 b64_json으로 반환
-    const b64 = data.data[0].b64_json;
-    imageUrl.value = b64
-      ? `data:image/png;base64,${b64}`
-      : data.data[0].url;
-
+    imageUrl.value = selectedModel.value === 'gemini-imagen'
+      ? await generateWithGemini()
+      : await generateWithGPT();
   } catch (e: any) {
     error.value = e.message || 'An error occurred. Please try again.';
   } finally {
@@ -120,6 +163,30 @@ async function generate() {
   margin-bottom: 48px;
   letter-spacing: -0.5px;
   color: #fff;
+}
+
+/* 모델 선택 */
+.model-select-wrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.model-btn {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid #2e2e2e;
+  background: transparent;
+  color: #666;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+
+  &:hover:not(:disabled) { border-color: #555; color: #aaa; }
+  &:disabled { cursor: not-allowed; opacity: 0.4; }
+  &.active { background: #fff; color: #0a0a0a; border-color: #fff; }
 }
 
 /* 프롬프트 영역 */
