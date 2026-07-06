@@ -531,7 +531,10 @@ onMounted(() => {
   animation: spin 0.7s linear infinite;
 }
 
-/* 모달 */
+
+</style>
+
+<style lang="less">
 .modal-backdrop {
   position: fixed;
   inset: 0;
