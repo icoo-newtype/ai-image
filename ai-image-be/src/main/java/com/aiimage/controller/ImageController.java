@@ -24,8 +24,10 @@ public class ImageController {
   }
 
   @GetMapping("/image/list")
-  public ResponseEntity<List<ImageItem>> list() {
-    return ResponseEntity.ok(imageService.getList());
+  public ResponseEntity<List<ImageItem>> list(
+      @RequestParam(defaultValue = "0") long lastSq,
+      @RequestParam(defaultValue = "15") int size) {
+    return ResponseEntity.ok(imageService.getList(lastSq, size));
   }
 
   @Data

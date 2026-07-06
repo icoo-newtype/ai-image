@@ -10,7 +10,11 @@
   <select id="getList" resultType="com.aiimage.model.image.ImageItem">
     SELECT sq, prompt, model, s3_key, url, reg_dtt, actor
     FROM t_image
+    <where>
+      <if test="lastSq > 0">sq &lt; #{lastSq}</if>
+    </where>
     ORDER BY sq DESC
+    LIMIT #{size}
   </select>
 
 </mapper>

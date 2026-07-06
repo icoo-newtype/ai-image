@@ -53,7 +53,7 @@ public class ImageService {
     return item;
   }
 
-  public List<ImageItem> getList() {
-    return imageMapper.getList();
+  public List<ImageItem> getList(long lastSq, int size) {
+    return imageMapper.getList(lastSq, size);
   }
 }

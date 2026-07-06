@@ -71,6 +71,9 @@
             </div>
           </div>
         </div>
+        <div ref="sentinelRef" class="sentinel">
+          <span v-if="listLoading" class="list-spinner" />
+        </div>
       </div>
     </div>
   </div>
@@ -110,6 +113,10 @@ const imageUrl = ref('');
 const loading = ref(false);
 const error = ref('');
 const imageList = ref<ImageItem[]>([]);
+const lastSq = ref(0);
+const hasMore = ref(true);
+const listLoading = ref(false);
+const sentinelRef = ref<HTMLElement>();
 
 async function generateWithGPT(): Promise<string> {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
@@ -158,18 +165,33 @@ async function saveImage(b64Image: string) {
       prompt: usedPrompt.value,
       model: selectedModel.value,
     });
-    await loadImageList();
+    // 저장 후 리스트 초기화해서 맨 위부터 다시 로드
+    imageList.value = [];
+    lastSq.value = 0;
+    hasMore.value = true;
+    await loadMore();
   } catch (e) {
     // silent fail
   }
 }
 
-async function loadImageList() {
+async function loadMore() {
+  if (listLoading.value || !hasMore.value) return;
+  listLoading.value = true;
   try {
-    const { data } = await oax.get<ImageItem[]>('/api/image/list');
-    imageList.value = data;
+    const { data } = await oax.get<ImageItem[]>('/api/image/list', {
+      lastSq: lastSq.value,
+      size: 15,
+    });
+    if (data.length < 15) hasMore.value = false;
+    if (data.length > 0) {
+      imageList.value.push(...data);
+      lastSq.value = data[data.length - 1].sq;
+    }
   } catch (e) {
     // silent fail
+  } finally {
+    listLoading.value = false;
   }
 }
 
@@ -196,7 +218,20 @@ async function generate() {
 }
 
 onMounted(() => {
-  loadImageList();
+  loadMore();
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) loadMore();
+  }, { threshold: 0.1 });
+
+  const checkSentinel = () => {
+    if (sentinelRef.value) {
+      observer.observe(sentinelRef.value);
+    } else {
+      setTimeout(checkSentinel, 100);
+    }
+  };
+  checkSentinel();
 });
 </script>
 
@@ -447,5 +482,22 @@ onMounted(() => {
 .gallery-model {
   font-size: 11px;
   color: #888;
+}
+
+.sentinel {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.list-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
 }
 </style>
