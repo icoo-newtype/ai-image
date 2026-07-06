@@ -58,12 +58,35 @@
         <div class="empty-icon">✦</div>
         <p>Enter a prompt and press Create to generate an image</p>
       </div>
+
+      <!-- 이미지 갤러리 -->
+      <div v-if="imageList.length > 0" class="gallery-section">
+        <h2 class="gallery-title">Gallery</h2>
+        <div class="gallery-grid">
+          <div v-for="item in imageList" :key="item.sq" class="gallery-item">
+            <img :src="item.url" :alt="item.prompt" />
+            <div class="gallery-overlay">
+              <p class="gallery-prompt">{{ item.prompt }}</p>
+              <span class="gallery-model">{{ item.model }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+
+interface ImageItem {
+  sq: number;
+  prompt: string;
+  model: string;
+  url: string;
+  regDtt: string;
+  actor: string;
+}
 
 const models = [
   { label: 'GPT Image', value: 'gpt-image-1' },
@@ -84,8 +107,9 @@ const usedPrompt = ref('');
 const imageUrl = ref('');
 const loading = ref(false);
 const error = ref('');
+const imageList = ref<ImageItem[]>([]);
 
-async function generateWithGPT() {
+async function generateWithGPT(): Promise<string> {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   const response = await fetch('https://api.openai.com/v1/images/generations', {
     method: 'POST',
@@ -106,10 +130,10 @@ async function generateWithGPT() {
   }
   const data = await response.json();
   const b64 = data.data[0].b64_json;
-  return b64 ? `data:image/png;base64,${b64}` : data.data[0].url;
+  return b64 ? b64 : null;
 }
 
-async function generateWithGemini() {
+async function generateWithGemini(): Promise<string> {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`,
@@ -129,7 +153,34 @@ async function generateWithGemini() {
   const data = await response.json();
   const b64 = data.predictions?.[0]?.bytesBase64Encoded;
   if (!b64) throw new Error('No image returned from Gemini');
-  return `data:image/png;base64,${b64}`;
+  return b64;
+}
+
+async function saveImage(b64Image: string) {
+  const response = await fetch('/api/admin/image/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({
+      b64Image,
+      prompt: usedPrompt.value,
+      model: selectedModel.value,
+    }),
+  });
+  if (response.ok) {
+    await loadImageList();
+  }
+}
+
+async function loadImageList() {
+  try {
+    const response = await fetch('/api/image/list');
+    if (response.ok) {
+      imageList.value = await response.json();
+    }
+  } catch (e) {
+    // silent fail
+  }
 }
 
 async function generate() {
@@ -141,15 +192,22 @@ async function generate() {
   usedPrompt.value = prompt.value;
 
   try {
-    imageUrl.value = selectedModel.value === 'gemini-imagen'
+    const b64 = selectedModel.value === 'gemini-imagen'
       ? await generateWithGemini()
       : await generateWithGPT();
+
+    imageUrl.value = `data:image/png;base64,${b64}`;
+    await saveImage(b64);
   } catch (e: any) {
     error.value = e.message || 'An error occurred. Please try again.';
   } finally {
     loading.value = false;
   }
 }
+
+onMounted(() => {
+  loadImageList();
+});
 </script>
 
 <style scoped lang="less">
@@ -331,5 +389,73 @@ async function generate() {
   }
 
   p { font-size: 15px; }
+}
+
+/* 갤러리 */
+.gallery-section {
+  margin-top: 80px;
+}
+
+.gallery-title {
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  aspect-ratio: 1;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  &:hover img { transform: scale(1.03); }
+  &:hover .gallery-overlay { opacity: 1; }
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.gallery-prompt {
+  font-size: 12px;
+  color: #ddd;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.gallery-model {
+  font-size: 11px;
+  color: #888;
 }
 </style>
