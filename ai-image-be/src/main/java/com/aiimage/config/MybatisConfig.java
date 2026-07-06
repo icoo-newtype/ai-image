@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
@@ -16,11 +17,12 @@ import javax.sql.DataSource;
 @Configuration
 @Lazy
 @RequiredArgsConstructor
-@MapperScan(basePackages = "com.aiimage.mapper")
+@MapperScan(basePackages = "com.aiimage.mapper", sqlSessionFactoryRef = "sqlSessionFactory")
 public class MybatisConfig {
 
   private final ApplicationContext context;
 
+  @Primary
   @Bean
   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
     SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
@@ -32,6 +34,7 @@ public class MybatisConfig {
     return sessionFactory.getObject();
   }
 
+  @Primary
   @Bean
   public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
     SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);

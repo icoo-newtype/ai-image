@@ -1,10 +1,11 @@
 package com.aiimage.config;
 
+import com.aiimage.mapper.image.ImageMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -18,7 +19,6 @@ import javax.sql.DataSource;
 @Configuration
 @Lazy
 @RequiredArgsConstructor
-@MapperScan(basePackages = "com.aiimage.mapper.image", sqlSessionFactoryRef = "aiImageSqlSessionFactory")
 public class AiImageDbConfig {
 
   private final ApplicationContext context;
@@ -43,5 +43,13 @@ public class AiImageDbConfig {
   @Bean
   public SqlSessionTemplate aiImageSqlSessionTemplate(@Qualifier("aiImageSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
     return new SqlSessionTemplate(sqlSessionFactory);
+  }
+
+  @Bean
+  public MapperFactoryBean<ImageMapper> imageMapper(
+      @Qualifier("aiImageSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    MapperFactoryBean<ImageMapper> factoryBean = new MapperFactoryBean<>(ImageMapper.class);
+    factoryBean.setSqlSessionFactory(sqlSessionFactory);
+    return factoryBean;
   }
 }
