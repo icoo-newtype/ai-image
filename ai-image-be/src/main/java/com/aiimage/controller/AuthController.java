@@ -4,7 +4,6 @@ import com.aiimage.service.AuthService;
 import com.aiimage.model.AuthInfo;
 import com.aiimage.model.ChangePwd;
 import com.aiimage.model.LoginParam;
-import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -36,7 +35,7 @@ public class AuthController {
           @ApiResponse(responseCode = "200", description = "로그인 성공"),
           @ApiResponse(responseCode = "401", description = "아이디 혹은 비밀번호가 일치하지 않음"),
   })
-  public String login(@RequestBody LoginParam loginParam) {
+  public String login(LoginParam loginParam) {
     return authService.login(loginParam);
   }
 
