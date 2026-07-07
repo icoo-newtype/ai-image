@@ -626,6 +626,6 @@ onMounted(() => {
   text-decoration: none;
   transition: background 0.2s;
 
-  &:hover { background: #e8e8e8; }
+  &:hover { background: #e8e8e8; color: #0a0a0a; }
 }
 </style>
