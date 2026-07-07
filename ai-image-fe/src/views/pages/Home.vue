@@ -78,7 +78,7 @@
     </div>
 
     <!-- 이미지 상세 팝업 -->
-    <Modal v-model="modalOpen" :hide-header="true" size="md">
+    <Modal v-model="modalOpen" :hide-header="true" size="lg">
       <div v-if="modalItem" class="image-detail-modal">
         <div class="image-detail-img-wrap">
           <img :src="modalItem.url" :alt="modalItem.prompt" />
@@ -90,6 +90,11 @@
             <span class="image-detail-date">{{ formatDate(modalItem.regDtt) }}</span>
           </div>
           <a :href="modalItem.url" target="_blank" :download="`ai-image-${modalItem.sq}.png`" class="image-detail-download">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
             Download
           </a>
         </div>
@@ -530,66 +535,91 @@ onMounted(() => {
   animation: spin 0.7s linear infinite;
 }
 
+/* 모달 다크 테마 오버라이드 */
+.ai-image-page {
+  .modal-content {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .modal-body {
+    padding: 0;
+  }
+}
+
 .image-detail-modal {
-  overflow: hidden;
+  display: flex;
+  min-height: 440px;
 }
 
 .image-detail-img-wrap {
-  width: 100%;
-  aspect-ratio: 1;
+  flex: 0 0 55%;
   background: #0a0a0a;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
   }
 }
 
 .image-detail-info {
-  padding: 20px;
+  flex: 1;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  background: #111;
 }
 
 .image-detail-prompt {
   font-size: 14px;
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 12px;
+  color: #999;
+  line-height: 1.75;
+  flex: 1;
+  margin-bottom: 28px;
+  word-break: break-word;
 }
 
 .image-detail-meta {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .image-detail-model {
-  font-size: 12px;
-  color: #666;
-  background: #1e1e1e;
-  padding: 3px 10px;
+  font-size: 11px;
+  color: #777;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  padding: 4px 12px;
   border-radius: 999px;
+  width: fit-content;
+  letter-spacing: 0.03em;
 }
 
 .image-detail-date {
   font-size: 12px;
-  color: #555;
-  display: flex;
-  align-items: center;
+  color: #444;
 }
 
 .image-detail-download {
-  display: inline-block;
-  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
   background: #fff;
   color: #0a0a0a;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
   transition: background 0.2s;
 
-  &:hover { background: #e0e0e0; }
+  &:hover { background: #e8e8e8; }
 }
 </style>
