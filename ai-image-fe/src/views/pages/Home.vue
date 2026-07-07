@@ -84,7 +84,10 @@
           <img :src="modalItem.url" :alt="modalItem.prompt" />
         </div>
         <div class="image-detail-info">
-          <p class="image-detail-prompt">{{ modalItem.prompt }}</p>
+          <p class="image-detail-prompt" :class="{ copied: promptCopied }" @click="copyPrompt(modalItem.prompt)">
+            {{ modalItem.prompt }}
+            <span class="copy-hint">{{ promptCopied ? 'Copied!' : 'Click to copy' }}</span>
+          </p>
           <div class="image-detail-meta">
             <span class="image-detail-model">{{ modalItem.model }}</span>
             <span class="image-detail-date">{{ formatDate(modalItem.regDtt) }}</span>
@@ -145,6 +148,13 @@ const listLoading = ref(false);
 const sentinelRef = ref<HTMLElement>();
 const modalItem = ref<ImageItem | null>(null);
 const modalOpen = ref(false);
+const promptCopied = ref(false);
+
+async function copyPrompt(text: string) {
+  await navigator.clipboard.writeText(text);
+  promptCopied.value = true;
+  setTimeout(() => { promptCopied.value = false; }, 2000);
+}
 
 function openModal(item: ImageItem) { modalItem.value = item; modalOpen.value = true; }
 function closeModal() { modalOpen.value = false; }
@@ -582,6 +592,35 @@ onMounted(() => {
   flex: 1;
   margin-bottom: 28px;
   word-break: break-word;
+  cursor: pointer;
+  position: relative;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: #2a2a2a;
+    background: #161616;
+
+    .copy-hint { opacity: 1; }
+  }
+
+  &.copied {
+    border-color: #2a4a2a;
+    background: #0f1f0f;
+
+    .copy-hint { opacity: 1; color: #4caf50; }
+  }
+}
+
+.copy-hint {
+  display: block;
+  font-size: 11px;
+  color: #555;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .image-detail-meta {
