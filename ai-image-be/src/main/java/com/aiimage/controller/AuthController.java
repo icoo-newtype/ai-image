@@ -4,7 +4,7 @@ import com.aiimage.service.AuthService;
 import com.aiimage.model.AuthInfo;
 import com.aiimage.model.ChangePwd;
 import com.aiimage.model.LoginParam;
-import com.aiimage.service.GrammarCheckService;
+import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,7 +23,6 @@ import java.util.Map;
 public class AuthController {
 
   private final AuthService authService;
-  private final GrammarCheckService grammarCheckService;
 
   @Operation(summary = "인증된 계정 정보 확인")
   @GetMapping("/auth/info")
@@ -38,12 +36,8 @@ public class AuthController {
           @ApiResponse(responseCode = "200", description = "로그인 성공"),
           @ApiResponse(responseCode = "401", description = "아이디 혹은 비밀번호가 일치하지 않음"),
   })
-  public String login(LoginParam loginParam) {
+  public String login(@RequestBody LoginParam loginParam) {
     return authService.login(loginParam);
   }
 
-  @PostMapping(value = "/admin/grammarCheck")
-  public Map<String, Object> check(@RequestParam("text") String text) {
-    return grammarCheckService.checkGrammar(text);
-  }
 }
