@@ -18,7 +18,6 @@ import java.util.List;
 public class ProjectService {
 
   private final ProjectMapper projectMapper;
-  private final LogService logService;
   private final CodeMapper codeMapper;
 
   public ListResult list(ListParam param) {
@@ -27,25 +26,18 @@ public class ProjectService {
     }
     List<ProjectItem> list = projectMapper.list(param);
     int count = projectMapper.count(param);
-    if (param.isAdmin()) {
-      logService.access("프로젝트 리스트", "프로젝트 목록조회", list.size());
-    }
     return new ListResult(list, count, param);
   }
 
   public ProjectItem detail(SqParam param) {
-
     return projectMapper.detail(param);
   }
 
   public boolean validatePassword(SlugParam param) {
-//    String inputPwd = OxStr.password(param.getPassword());
     String inputPwd = param.getPassword();
-
     if (inputPwd == null || inputPwd.isEmpty()) {
       return false;
     }
-
     String storedPwd = projectMapper.getPassword(param);
     return storedPwd != null && storedPwd.equals(inputPwd);
   }
@@ -61,13 +53,9 @@ public class ProjectService {
     }
     if (item.getSq() == null) {
       projectMapper.insert(item);
-      logService.access("프로젝트 > 새 프로젝트 등록", "새 프로젝트 등록: " + item.getTitle(), 1);
     } else {
-//      item.setPassword(OxStr.password(item.getPassword()));
       projectMapper.update(item);
-      logService.access("프로젝트 > 모든 프로젝트", "프로젝트 수정 : " + item.getTitle(), 1);
     }
-
     return item;
   }
 
@@ -77,8 +65,6 @@ public class ProjectService {
     for (Integer sq : sqs) {
       param.setSq(sq);
       projectMapper.delete(param);
-      logService.access("프로젝트 > 모든 게시물", "프로젝트 삭제 : " + sq, 1);
     }
   }
-
 }
