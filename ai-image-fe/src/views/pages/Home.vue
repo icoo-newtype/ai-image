@@ -88,6 +88,7 @@
           <div class="image-detail-meta">
             <span class="image-detail-model">{{ modalItem.model }}</span>
             <span class="image-detail-date">{{ formatDate(modalItem.regDtt) }}</span>
+            <span class="image-detail-author">{{ modalItem.actor }}</span>
           </div>
           <a :href="modalItem.url" target="_blank" :download="`ai-image-${modalItem.sq}.png`" class="image-detail-download">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -604,6 +605,11 @@ onMounted(() => {
 .image-detail-date {
   font-size: 12px;
   color: #444;
+}
+
+.image-detail-author {
+  font-size: 12px;
+  color: #555;
 }
 
 .image-detail-download {
