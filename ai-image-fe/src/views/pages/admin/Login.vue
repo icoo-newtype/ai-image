@@ -36,7 +36,7 @@ const loginAction = async () => {
   <div class="login-wrap">
     <div class="login-box">
       <div class="login-header">
-        <h1 class="login-title">AI Image</h1>
+        <h1 class="login-title">AI Image <span class="login-beta">beta</span></h1>
         <p class="login-subtitle">관리자 로그인</p>
       </div>
 
@@ -83,7 +83,7 @@ const loginAction = async () => {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="less">
 .login-wrap {
   min-height: 100vh;
   display: flex;
@@ -111,6 +111,16 @@ const loginAction = async () => {
   color: #111;
   margin: 0 0 8px;
   letter-spacing: -0.5px;
+  .login-beta {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: #6c63ff;
+    border-radius: 4px;
+    padding: 2px 7px;
+    vertical-align: middle;
+    letter-spacing: 0;
+  }
 }
 
 .login-subtitle {
