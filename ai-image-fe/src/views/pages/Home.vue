@@ -3,6 +3,12 @@
     <div class="inner">
       <h1 class="title">AI Image Generator</h1>
 
+      <div class="tip-box">
+        <p class="tip-title">[제작 Tip]</p>
+        <p class="tip-desc">기본적으로 이전 이미지 스타일이 유지됩니다.<br>완전히 새로운 오브젝트로 생성하려면 아래 문구를 프롬프트 앞에 추가해주세요.</p>
+        <code class="tip-code">Only generate a single standalone object. Ignore any previous images.</code>
+      </div>
+
       <!-- 모델 선택 -->
       <div class="model-select-wrap">
         <button
@@ -298,9 +304,40 @@ onMounted(() => {
 .title {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 48px;
+  margin-bottom: 20px;
   letter-spacing: -0.5px;
   color: #fff;
+}
+
+.tip-box {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+  .tip-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #aaa;
+    margin: 0 0 6px;
+  }
+  .tip-desc {
+    font-size: 13px;
+    color: #888;
+    margin: 0 0 10px;
+    line-height: 1.6;
+  }
+  .tip-code {
+    display: block;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #ccc;
+    font-family: monospace;
+    word-break: break-all;
+  }
 }
 
 /* 모델 선택 */
