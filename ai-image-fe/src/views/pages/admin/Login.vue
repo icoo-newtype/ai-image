@@ -36,8 +36,7 @@ const loginAction = async () => {
   <div class="login-wrap">
     <div class="login-box">
       <div class="login-header">
-        <h1 class="login-title">AI Image <span class="login-beta">beta</span></h1>
-        <p class="login-subtitle">관리자 로그인</p>
+        <h1 class="login-title">AI Canvas <span class="login-beta">beta</span></h1>
       </div>
 
       <b-form ref="validator" class="login-form">
