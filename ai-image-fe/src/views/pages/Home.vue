@@ -29,7 +29,13 @@
           <img :src="uploadedImage" alt="uploaded" />
           <button class="remove-image-btn" @click="removeImage">✕</button>
         </div>
-        <div class="prompt-input-row">
+        <div
+          class="prompt-input-row"
+          :class="{ dragging: isDragging }"
+          @dragover.prevent="isDragging = true"
+          @dragleave="isDragging = false"
+          @drop.prevent="onDrop"
+        >
           <textarea
             ref="textareaRef"
             v-model="prompt"
@@ -151,6 +157,7 @@ const textareaRef = ref<HTMLTextAreaElement>();
 const fileInputRef = ref<HTMLInputElement>();
 const uploadedImage = ref('');
 const uploadedImageBase64 = ref('');
+const isDragging = ref(false);
 
 function onFileChange(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0];
@@ -168,6 +175,19 @@ function removeImage() {
   uploadedImage.value = '';
   uploadedImageBase64.value = '';
   if (fileInputRef.value) fileInputRef.value.value = '';
+}
+
+function onDrop(e: DragEvent) {
+  isDragging.value = false;
+  const file = e.dataTransfer?.files?.[0];
+  if (!file || !file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const result = ev.target?.result as string;
+    uploadedImage.value = result;
+    uploadedImageBase64.value = result.split(',')[1];
+  };
+  reader.readAsDataURL(file);
 }
 
 function autoResize() {
@@ -454,6 +474,12 @@ onMounted(() => {
   display: flex;
   gap: 8px;
   align-items: flex-end;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+  &.dragging {
+    box-shadow: 0 0 0 2px #6c63ff;
+    .prompt-input { border-color: #6c63ff; }
+  }
 }
 
 .attach-btn {
