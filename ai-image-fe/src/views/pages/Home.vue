@@ -25,28 +25,15 @@
 
       <!-- 프롬프트 입력 영역 -->
       <div class="prompt-section">
-        <div v-if="uploadedImage" class="uploaded-preview">
-          <img :src="uploadedImage" alt="uploaded" />
-          <button class="remove-image-btn" @click="removeImage">✕</button>
-        </div>
-        <div class="prompt-input-row">
-          <textarea
-            ref="textareaRef"
-            v-model="prompt"
-            class="prompt-input"
-            placeholder="Describe the image you want to create..."
-            :disabled="loading"
-            @keydown.ctrl.enter="generate"
-            @input="autoResize"
-          />
-          <label class="attach-btn" :class="{ active: !!uploadedImage }" title="이미지 첨부">
-            <input ref="fileInputRef" type="file" accept="image/*" style="display:none" @change="onFileChange" />
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-          </label>
-        </div>
+        <textarea
+          ref="textareaRef"
+          v-model="prompt"
+          class="prompt-input"
+          placeholder="Describe the image you want to create..."
+          :disabled="loading"
+          @keydown.ctrl.enter="generate"
+          @input="autoResize"
+        />
         <button
           class="create-btn"
           :disabled="!prompt.trim() || loading"
@@ -148,27 +135,6 @@ const models = [
 
 const selectedModel = ref('gpt-image-1');
 const textareaRef = ref<HTMLTextAreaElement>();
-const fileInputRef = ref<HTMLInputElement>();
-const uploadedImage = ref('');
-const uploadedImageBase64 = ref('');
-
-function onFileChange(e: Event) {
-  const file = (e.target as HTMLInputElement).files?.[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    const result = ev.target?.result as string;
-    uploadedImage.value = result;
-    uploadedImageBase64.value = result.split(',')[1];
-  };
-  reader.readAsDataURL(file);
-}
-
-function removeImage() {
-  uploadedImage.value = '';
-  uploadedImageBase64.value = '';
-  if (fileInputRef.value) fileInputRef.value.value = '';
-}
 
 function autoResize() {
   const el = textareaRef.value;
@@ -205,55 +171,40 @@ function formatDate(dtt: string) {
 
 async function generateWithGPT(): Promise<string> {
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-  if (uploadedImageBase64.value) {
-    // 이미지 첨부 시 edits API 사용
-    const blob = await fetch(`data:image/png;base64,${uploadedImageBase64.value}`).then(r => r.blob());
-    const formData = new FormData();
-    formData.append('model', 'gpt-image-1');
-    formData.append('prompt', prompt.value);
-    formData.append('image[]', new File([blob], 'image.png', { type: 'image/png' }));
-    const response = await fetch('https://api.openai.com/v1/images/edits', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${apiKey}` },
-      body: formData,
-    });
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error?.message || 'Image generation failed');
-    }
-    const data = await response.json();
-    return data.data[0].b64_json;
-  }
-
   const response = await fetch('https://api.openai.com/v1/images/generations', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-    body: JSON.stringify({ model: 'gpt-image-1', prompt: prompt.value, n: 1, size: '1024x1024' }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-image-1',
+      prompt: prompt.value,
+      n: 1,
+      size: '1024x1024',
+    }),
   });
   if (!response.ok) {
     const err = await response.json();
     throw new Error(err.error?.message || 'Image generation failed');
   }
   const data = await response.json();
-  return data.data[0].b64_json;
+  const b64 = data.data[0].b64_json;
+  return b64 ? b64 : null;
 }
 
 async function generateWithGemini(): Promise<string> {
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
   const ai = new GoogleGenAI({ apiKey });
-  const parts: any[] = [];
-  if (uploadedImageBase64.value) {
-    parts.push({ inlineData: { mimeType: 'image/png', data: uploadedImageBase64.value } });
-  }
-  parts.push({ text: prompt.value });
   const response = await ai.models.generateContent({
     model: 'gemini-3.1-flash-image',
-    contents: [{ role: 'user', parts }],
+    contents: [{ role: 'user', parts: [{ text: prompt.value }] }],
     config: { responseModalities: ['IMAGE', 'TEXT'] },
   });
   for (const part of response.candidates?.[0]?.content?.parts ?? []) {
-    if (part.inlineData?.data) return part.inlineData.data;
+    if (part.inlineData?.data) {
+      return part.inlineData.data;
+    }
   }
   throw new Error('No image returned from Gemini');
 }
@@ -416,61 +367,9 @@ onMounted(() => {
 /* 프롬프트 영역 */
 .prompt-section {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.uploaded-preview {
-  position: relative;
-  display: inline-block;
-  align-self: flex-start;
-  img {
-    height: 80px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    display: block;
-  }
-  .remove-image-btn {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 20px;
-    height: 20px;
-    background: #444;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover { background: #666; }
-  }
-}
-
-.prompt-input-row {
-  display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: flex-end;
-}
-
-.attach-btn {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  background: #1a1a1a;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #666;
-  transition: border-color 0.2s, color 0.2s;
-  &:hover { border-color: #555; color: #aaa; }
-  &.active { border-color: #6c63ff; color: #6c63ff; }
+  margin-bottom: 16px;
 }
 
 .prompt-input {
@@ -494,9 +393,9 @@ onMounted(() => {
 }
 
 .create-btn {
-  align-self: flex-end;
-  height: 48px;
-  width: 100%;
+  align-self: stretch;
+  height: auto;
+  min-height: 100px;
   padding: 0 32px;
   background: #fff;
   color: #0a0a0a;
