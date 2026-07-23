@@ -24,43 +24,43 @@
       </div>
 
       <!-- 프롬프트 입력 영역 -->
-      <div class="prompt-section">
+      <div
+        class="prompt-section"
+        :class="{ dragging: isDragging }"
+        @dragover.prevent="isDragging = true"
+        @dragleave="isDragging = false"
+        @drop.prevent="onDrop"
+      >
         <div v-if="uploadedImage" class="uploaded-preview">
           <img :src="uploadedImage" alt="uploaded" />
           <button class="remove-image-btn" @click="removeImage">✕</button>
         </div>
-        <div
-          class="prompt-input-row"
-          :class="{ dragging: isDragging }"
-          @dragover.prevent="isDragging = true"
-          @dragleave="isDragging = false"
-          @drop.prevent="onDrop"
-        >
-          <textarea
-            ref="textareaRef"
-            v-model="prompt"
-            class="prompt-input"
-            placeholder="Describe the image you want to create..."
-            :disabled="loading"
-            @keydown.ctrl.enter="generate"
-            @input="autoResize"
-          />
+        <textarea
+          ref="textareaRef"
+          v-model="prompt"
+          class="prompt-input"
+          placeholder="Describe the image you want to create..."
+          :disabled="loading"
+          @keydown.ctrl.enter="generate"
+          @input="autoResize"
+        />
+        <div class="prompt-actions">
           <label class="attach-btn" :class="{ active: !!uploadedImage }" title="이미지 첨부">
             <input ref="fileInputRef" type="file" accept="image/*" style="display:none" @change="onFileChange" />
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
               <polyline points="21 15 16 10 5 21"/>
             </svg>
           </label>
+          <button
+            class="create-btn"
+            :disabled="!prompt.trim() || loading"
+            @click="generate"
+          >
+            <span v-if="loading" class="loading-spinner" />
+            <span>{{ loading ? 'Creating...' : 'Create' }}</span>
+          </button>
         </div>
-        <button
-          class="create-btn"
-          :disabled="!prompt.trim() || loading"
-          @click="generate"
-        >
-          <span v-if="loading" class="loading-spinner" />
-          <span>{{ loading ? 'Creating...' : 'Create' }}</span>
-        </button>
       </div>
 
       <!-- 에러 메시지 -->
@@ -437,31 +437,38 @@ onMounted(() => {
 .prompt-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   margin-bottom: 16px;
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  &:focus-within { border-color: #555; }
+  &.dragging { border-color: #6c63ff; box-shadow: 0 0 0 2px rgba(108,99,255,0.2); }
 }
 
 .uploaded-preview {
   position: relative;
   display: inline-block;
+  margin: 12px 16px 0;
   align-self: flex-start;
   img {
-    height: 80px;
+    height: 72px;
     border-radius: 8px;
     border: 1px solid #333;
     display: block;
   }
   .remove-image-btn {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 20px;
-    height: 20px;
+    top: -7px;
+    right: -7px;
+    width: 18px;
+    height: 18px;
     background: #444;
     color: #fff;
     border: none;
     border-radius: 50%;
-    font-size: 10px;
+    font-size: 9px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -470,70 +477,59 @@ onMounted(() => {
   }
 }
 
-.prompt-input-row {
+.prompt-input {
+  width: 100%;
+  min-height: 100px;
+  height: 100px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 16px 16px 8px;
+  resize: none;
+  font-family: inherit;
+  box-sizing: border-box;
+
+  &::placeholder { color: #555; }
+  &:focus { outline: none; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.prompt-actions {
   display: flex;
-  gap: 8px;
-  align-items: flex-end;
-  border-radius: 12px;
-  transition: box-shadow 0.2s;
-  &.dragging {
-    box-shadow: 0 0 0 2px #6c63ff;
-    .prompt-input { border-color: #6c63ff; }
-  }
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 10px;
 }
 
 .attach-btn {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  background: #1a1a1a;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #666;
-  transition: border-color 0.2s, color 0.2s;
-  &:hover { border-color: #555; color: #aaa; }
-  &.active { border-color: #6c63ff; color: #6c63ff; }
-}
-
-.prompt-input {
-  flex: 1;
-  min-height: 100px;
-  height: 100px;
-  background: #1a1a1a;
-  border: 1px solid #2e2e2e;
-  border-radius: 12px;
-  color: #fff;
-  font-size: 15px;
-  line-height: 1.6;
-  padding: 16px;
-  resize: none;
-  transition: border-color 0.2s;
-  font-family: inherit;
-
-  &::placeholder { color: #555; }
-  &:focus { outline: none; border-color: #555; }
-  &:disabled { opacity: 0.5; cursor: not-allowed; }
+  color: #555;
+  transition: background 0.2s, color 0.2s;
+  &:hover { background: #2a2a2a; color: #aaa; }
+  &.active { color: #6c63ff; }
 }
 
 .create-btn {
-  align-self: flex-end;
-  height: 48px;
-  width: 100%;
-  padding: 0 32px;
+  height: 36px;
+  padding: 0 20px;
   background: #fff;
   color: #0a0a0a;
   border: none;
-  border-radius: 12px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   white-space: nowrap;
   transition: background 0.2s, opacity 0.2s;
   font-family: inherit;
