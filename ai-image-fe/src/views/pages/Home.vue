@@ -708,6 +708,9 @@ onMounted(() => {
 
 /* 모달 다크 테마 오버라이드 */
 .ai-image-page {
+  .modal-lg {
+    max-width: 900px;
+  }
   .modal-content {
     background: #111;
     border: 1px solid #1e1e1e;
@@ -749,7 +752,9 @@ onMounted(() => {
   font-size: 14px;
   color: #999;
   line-height: 1.75;
-  flex: 1;
+  flex: 0 1 auto;
+  max-height: 200px;
+  overflow-y: auto;
   margin-bottom: 28px;
   word-break: break-word;
   cursor: pointer;
