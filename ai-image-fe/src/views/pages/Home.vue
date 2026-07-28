@@ -752,8 +752,7 @@ onMounted(() => {
   font-size: 14px;
   color: #999;
   line-height: 1.75;
-  flex: 0 1 auto;
-  max-height: 200px;
+  flex: 1;
   overflow-y: auto;
   margin-bottom: 28px;
   word-break: break-word;
